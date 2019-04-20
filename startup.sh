@@ -57,3 +57,6 @@ sudo apt install arc-theme
 
 ## Update everything
 sudo apt update
+
+## Install Java
+sudo apt install default-jdk
