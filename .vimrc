@@ -5,6 +5,7 @@ Plug 'itchyny/lightline.vim'        " Status bar plugin
 Plug 'joshdick/onedark.vim'         " Theme
 Plug 'scrooloose/nerdtree'          " File tree explorer, toggle with <C-n> 
 Plug 'Xuyuanp/nerdtree-git-plugin'  " Not actually sure if this one works
+Plug 'tpope/vim-surround'           " Useful surround plugin for brackets
 call plug#end()
 """ End VIM PLUG
 
@@ -71,6 +72,7 @@ set hlsearch   """ Sets search highlighting on
 nnoremap <Space> :nohlsearch<Bar>:echo<Cr>
 """ Changes the color of seach highlights
 hi Search ctermbg=Blue ctermfg=White
+hi Search guibg=Blue guibg=White
 
 
 """ KEY MAPPINGS
