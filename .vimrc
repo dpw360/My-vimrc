@@ -1,11 +1,12 @@
 """ VIM PLUG
 call plug#begin('~/.vim/autoload')
-Plug 'tpope/vim-fugitive'           " Used for a status on the status bar
 Plug 'itchyny/lightline.vim'        " Status bar plugin
 Plug 'joshdick/onedark.vim'         " Theme
-Plug 'scrooloose/nerdtree'          " File tree explorer, toggle with <C-n> 
+Plug 'scrooloose/nerdtree'          " File tree explorer, toggle with <C-o> 
+Plug 'scrooloose/nerdcommenter'     " Comment functions
 Plug 'Xuyuanp/nerdtree-git-plugin'  " Not actually sure if this one works
 Plug 'tpope/vim-surround'           " Useful surround plugin for brackets
+Plug 'tpope/vim-fugitive'           " Used for a status on the status bar
 call plug#end()
 """ End VIM PLUG
 
@@ -22,6 +23,7 @@ if (empty($TMUX))
 endif
 
 
+""" Settings for lightline bar
 let g:lightline = {
       \ 'colorscheme': 'onedark',
       \ 'active': {
@@ -34,7 +36,6 @@ let g:lightline = {
       \ }
 
 
-
 """ Settings for onedark and lightline
 syntax on
 colorscheme onedark
@@ -44,12 +45,6 @@ set noshowmode
 
 """ Settings for line numbers
 set number
-noremap <C-l> :set relativenumber!<Cr>
-
-
-""" Auto-Open NERDTree on start if no file is specified
-"autocmd StdinReadPre * let s:std_in=1
-"autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 
 """ Closes vim automatically if there is only NERDTree open
@@ -67,17 +62,17 @@ set shiftwidth=4
 
 
 """ Set search options
-set hlsearch   """ Sets search highlighting on
-""" Maps space bar to remove highlights after a search
-nnoremap <Space> :nohlsearch<Bar>:echo<Cr>
-""" Changes the color of seach highlights
+set hlsearch
 hi Search ctermbg=Blue ctermfg=White
 hi Search guibg=Blue guibg=White
 
 
 """ KEY MAPPINGS
-let mapleader="-"
-noremap <C-n> :NERDTreeToggle<CR>
+let mapleader='-'
+noremap <C-o> :NERDTreeToggle<CR>
+noremap <C-n> <esc>$a<cr>
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>:wq<cr>
+noremap <C-l> :set relativenumber!<Cr>
+nnoremap <Space> :nohlsearch<Bar>:echo<Cr>
