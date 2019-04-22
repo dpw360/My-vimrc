@@ -47,12 +47,12 @@ set noshowmode
 set number
 
 
+
+""" NERDTree settings
+let g:NERDTreeWinSize=23
 """ Closes vim automatically if there is only NERDTree open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
-""" NERDTree width
-let g:NERDTreeWinSize=23
 
 
 """ Sets tab settings to use tabs of length 4
@@ -63,8 +63,9 @@ set shiftwidth=4
 
 """ Set search options
 set hlsearch
+set incsearch
 hi Search ctermbg=Blue ctermfg=White
-hi Search guibg=Blue guibg=White
+hi Search guibg=Blue guifg=White
 
 
 """ KEY MAPPINGS
