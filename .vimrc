@@ -1,8 +1,10 @@
 """ VIM PLUG
 call plug#begin('~/.vim/autoload')
-Plug 'itchyny/lightline.vim'        " Status bar plugin
+""" Plug 'itchyny/lightline.vim'        " Status bar plugin
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'joshdick/onedark.vim'         " Theme
-Plug 'scrooloose/nerdtree'          " File tree explorer, toggle with <C-o> 
+Plug 'scrooloose/nerdtree'          " File tree explorer, toggle with <C-o>
 Plug 'scrooloose/nerdcommenter'     " Comment functions
 Plug 'Xuyuanp/nerdtree-git-plugin'  " Not actually sure if this one works
 Plug 'tpope/vim-surround'           " Useful surround plugin for brackets
@@ -24,16 +26,24 @@ endif
 
 
 """ Settings for lightline bar
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename' ]     ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'fugitive#head'
-      \ },
-      \ }
+"let g:lightline = {
+      "\ 'colorscheme': 'onedark',
+      "\ 'active': {
+      "\   'left': [ [ 'mode', 'paste' ],
+      "\             [ 'gitbranch', 'readonly', 'filename' ]     ]
+      "\ },
+      "\ 'component_function': {
+      "\   'gitbranch': 'fugitive#head'
+      "\ },
+      "\ }
+
+
+""" Airline settings
+let g:airline_powerline_fonts=1
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
 
 
 """ Settings for onedark and lightline
@@ -46,6 +56,9 @@ set noshowmode
 """ Settings for line numbers
 set number
 
+
+""" Bell off
+set belloff=all
 
 
 """ NERDTree settings
@@ -70,10 +83,11 @@ hi Search guibg=Blue guifg=White
 
 """ KEY MAPPINGS
 let mapleader='-'
-noremap <C-o> :NERDTreeToggle<CR>
-noremap <C-n> <esc>$a<cr>
 inoremap jk <esc>
+nnoremap <C-n> <esc>$a<cr>
+nnoremap <C-o> :NERDTreeToggle<cr>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>:wq<cr>
 noremap <C-l> :set relativenumber!<Cr>
 nnoremap <Space> :nohlsearch<Bar>:echo<Cr>
+nnoremap <C-w> :AirlineToggleWhitespace<cr>
